@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
-danh sách danh mục
-<table>
+
+<table class="table table-stripped">
     <thead>
         <th>ID</th>
         <th>Tên danh mục</th>
