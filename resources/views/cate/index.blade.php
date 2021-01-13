@@ -2,6 +2,15 @@
 @section('page-title', 'Danh sách danh mục')
     
 @section('content')
+<form action="" method="get">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" class="form-control" name="keyword" value="{{$keyword}}">
+            </div>
+        </div>
+    </div>
+</form>
 <table class="table table-stripped">
     <thead>
         <th>ID</th>
