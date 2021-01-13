@@ -1,6 +1,7 @@
 @extends('layouts.main')
+@section('page-title', 'Danh sách danh mục')
+    
 @section('content')
-
 <table class="table table-stripped">
     <thead>
         <th>ID</th>
@@ -25,4 +26,9 @@
         @endforeach
     </tbody>
 </table>
+
+    <div class="col-xs-4 offset-xs-8 pull-right">
+        {{$cates->links()}}
+    </div>
+
 @endsection
