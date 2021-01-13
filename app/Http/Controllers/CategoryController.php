@@ -11,8 +11,8 @@ class CategoryController extends Controller
         if($request->keyword){
             $cates = Category::where(
                     'name', 'like', "%".$request->keyword."%"
-                )
-                        ->paginate(10);
+                )->paginate(10);
+            $cates->withPath('?keyword=' . $request->keyword);
         }else{
             $cates = Category::paginate(10);
         }
