@@ -17,9 +17,11 @@ use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('homepage');
 Route::get('danh-muc', [CategoryController::class, 'index'])->name('cate.index');
 Route::get('danh-muc/{id}/remove', 
             [CategoryController::class, 'remove'])->name('cate.remove');
-
+Route::get('danh-muc/tao-moi', function(){
+    return 1;
+})->name('cate.add');
 Route::view('demo', 'layouts.main');

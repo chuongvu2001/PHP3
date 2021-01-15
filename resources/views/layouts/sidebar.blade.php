@@ -23,37 +23,38 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="/" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Danh mục
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('cate.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Danh sách</p>
+          @foreach ($menus as $item)
+              @if(!$item['hasChild'])
+              <li class="nav-item has-treeview menu-open">
+                <a href="{{$item['url']}}" class="nav-link active">
+                  <i class="{{$item['icon']}}"></i>
+                  <p>{{$item['text']}}</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{route('cate.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Tạo mới</p>
+              @else
+              <li class="nav-item has-treeview">
+                <a href="javascript:;" class="nav-link">
+                  <i class="{{$item['icon']}}"></i>
+                  <p>
+                    {{$item['text']}}
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
                 </a>
+                <ul class="nav nav-treeview">
+                  @foreach ($item['childs'] as $child)
+                  <li class="nav-item">
+                    <a href="{{$child['url']}}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>{{$child['text']}}</p>
+                    </a>
+                  </li>
+                  @endforeach
+                </ul>
               </li>
-            </ul>
-          </li>
+              @endif
+          @endforeach
+          
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

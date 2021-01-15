@@ -2,6 +2,7 @@
 @section('page-title', 'Danh sách danh mục')
     
 @section('content')
+
 <form action="" method="get">
     <div class="row">
         <div class="col-md-6">
