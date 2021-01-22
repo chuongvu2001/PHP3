@@ -18,7 +18,7 @@
         <th>Tên danh mục</th>
         <th>Mô tả</th>
         <th>
-            <a href="">Tạo mới</a>
+            <a href="{{route('cate.add')}}">Tạo mới</a>
         </th>
     </thead>
     <tbody>
@@ -30,7 +30,8 @@
             </td>
             <td>{{$item->detail}}</td>
             <td>
-                <a href="{{route('cate.remove', ['id' => $item->id])}}">Xóa</a>
+                <a href="{{route('cate.edit', ['id' => $item->id])}}" class="btn btn-sm btn-info">Sửa</a>
+                <a href="{{route('cate.remove', ['id' => $item->id])}}" class="btn btn-sm btn-danger">Xóa</a>
             </td>
         </tr>
         @endforeach

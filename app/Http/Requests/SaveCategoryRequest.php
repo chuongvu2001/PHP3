@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Validation\Rule;
 class SaveCategoryRequest extends FormRequest
 {
     /**
@@ -24,7 +24,11 @@ class SaveCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:4',
+            'name' => [
+                'required',
+                'min:4',
+                Rule::unique('categories')->ignore($this->id)
+            ],
             'detail' => "max:50"
         ];
     }
@@ -34,6 +38,7 @@ class SaveCategoryRequest extends FormRequest
         return [
             'name.required' => "Hãy nhập tên danh mục",
             'name.min' => "Ít nhất có 4 ký tự",
+            'name.unique' => "Tên danh mục đã tồn tại",
             'detail.max' => "Không được vượt quá 50 ký tự"
         ];
     }

@@ -34,6 +34,22 @@ class CategoryController extends Controller
         return view('cate.add-form');
     }
 
+    public function editForm($id){
+        $model = Category::find($id);
+        if(!$model) return redirect(route('cate.index'));
+
+        return view('cate.edit-form', ['model' => $model]);
+    }
+
+    public function saveEdit($id, SaveCategoryRequest $request)
+    {
+        $model = Category::find($id);
+        $model->name = $request->name;
+        $model->detail = $request->detail;
+        $model->save();
+        return redirect(route('cate.index'));
+    }
+
     public function saveAdd(SaveCategoryRequest $request)
     {
         $model = new Category();
