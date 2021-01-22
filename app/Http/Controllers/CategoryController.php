@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Http\Requests\SaveCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -26,6 +27,20 @@ class CategoryController extends Controller
 
     public function remove($id){
         Category::destroy($id);
+        return redirect(route('cate.index'));
+    }
+
+    public function addForm(){
+        return view('cate.add-form');
+    }
+
+    public function saveAdd(SaveCategoryRequest $request)
+    {
+        $model = new Category();
+        $model->name = $request->name;
+        $model->detail = $request->detail;
+        $model->save();
+
         return redirect(route('cate.index'));
     }
 }
