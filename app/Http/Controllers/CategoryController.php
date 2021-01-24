@@ -10,6 +10,7 @@ class CategoryController extends Controller
 {
     public function index(Request $request){
         if($request->keyword){
+        
             $cates = Category::where(
                     'name', 'like', "%".$request->keyword."%"
                 )->paginate(10);
@@ -17,7 +18,8 @@ class CategoryController extends Controller
         }else{
             $cates = Category::paginate(10);
         }
-        
+
+        $cates->load('products');
         
         return view('cate.index', [
             'cates' => $cates,

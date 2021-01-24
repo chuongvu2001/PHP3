@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +27,5 @@ Route::post('danh-muc/add', [CategoryController::class, 'saveAdd']);
 
 Route::get('danh-muc/edit/{id}', [CategoryController::class, 'editForm'])->name('cate.edit');
 Route::post('danh-muc/edit/{id}', [CategoryController::class, 'saveEdit']);
+
+Route::get('san-pham', [ProductController::class, 'index'])->name('product.index');
