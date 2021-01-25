@@ -28,13 +28,14 @@ class OrderTableSeeder extends Seeder
             
             for($j = 0; $j < rand(1, 4); $j++){
                 $productId = rand(1, 100);
+                $quantity = rand(1, 5);
                 $product = Product::find($productId);
-                $model->total_price += $product->price;
+                $model->total_price += $product->price * $quantity;
 
                 $orderDetailModel = new OrderDetail();
                 $orderDetailModel->order_id = $model->id;
                 $orderDetailModel->product_id = $product->id;
-                $orderDetailModel->quantity = rand(1, 5);
+                $orderDetailModel->quantity = $quantity;
                 $orderDetailModel->unit_price = $product->price;
                 $orderDetailModel->save();
             }
