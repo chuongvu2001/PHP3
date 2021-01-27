@@ -19,15 +19,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    dd(Auth::user());
     return view('welcome');
 })->name('homepage');
 
 Route::view('login', 'auth.login')->name('login');
 Route::post('login', [LoginController::class, 'postLogin']);
-
+Route::any('logout', function(){
+    Auth::logout();
+    return redirect(route('login'));
+})->name('logout');
 
 Route::prefix('danh-muc')
+    ->middleware('auth')
     ->group(function(){
         Route::get('/', [CategoryController::class, 'index'])
             // ->middleware('check-age-gt18')
