@@ -17,10 +17,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
+    
     return view('welcome');
 })->name('homepage');
+
+use Illuminate\Http\Request;
+Route::view('upload-file', 'file-upload');
+Route::post('save-file-upload', function(Request $request){
+
+    $fileName = uniqid().'_'.$request->image->getClientOriginalName();
+    $filePath = $request->file('image')->storeAs('uploads', $fileName, 'public');
+
+    return $filePath;
+})->name('up.load');
 
 Route::view('login', 'auth.login')->name('login');
 Route::post('login', [LoginController::class, 'postLogin']);

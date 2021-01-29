@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\SaveCategoryRequest;
+use App\Models\Product;
 
 class CategoryController extends Controller
 {
@@ -30,6 +31,12 @@ class CategoryController extends Controller
     public function remove($id){
         Category::destroy($id);
         return redirect(route('cate.index'));
+    }
+
+    public function removeCate($id){
+        Product::where('cate_id', $id)->delete();
+        Category::destroy($id);
+        return true;
     }
 
     public function addForm(){
