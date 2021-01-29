@@ -61,4 +61,8 @@ Route::prefix('danh-muc')
 
 
 Route::get('san-pham', [ProductController::class, 'index'])->name('product.index');
+Route::get('san-pham/chi-tiet/{id}', [ProductController::class, 'detail'])
+        ->name('product.detail');
+Route::post('san-pham/api/tang-view', [ProductController::class, 'tangView'])
+->name('product.tangView');
 Route::get('hoa-don', [OrderController::class, 'index'])->name('order.index');

@@ -192,5 +192,6 @@ to get the desired effect
 <!-- REQUIRED SCRIPTS -->
 
 @include('layouts.script')
+@yield('page-script')
 </body>
 </html>
