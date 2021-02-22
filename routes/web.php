@@ -19,10 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 use Illuminate\Support\Facades\DB;
 
-Route::get('/', function () {
-    
-    return view('welcome');
-})->name('homepage');
+Route::get('/', [ProductController::class, 'homepage'])->name('homepage');
 
 use Illuminate\Http\Request;
 Route::view('upload-file', 'file-upload');

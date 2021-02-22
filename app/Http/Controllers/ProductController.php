@@ -15,6 +15,12 @@ class ProductController extends Controller
         return view('products.index', compact('products'));
     }
 
+    public function homepage(){
+        $products = Product::orderBy('id', 'desc')->take(10)->get();
+        
+        return view('homepage.index', compact('products'));
+    }
+
     public function detail($id){
         $product = Product::find($id);
         $totalViews = ProductView::where('product_id', $id)->sum('views');
