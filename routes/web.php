@@ -42,7 +42,7 @@ Route::any('logout', function(){
 })->name('logout');
 
 Route::prefix('danh-muc')
-    ->middleware('auth')
+    ->middleware('check-admin-role')
     ->group(function(){
         Route::get('/', [CategoryController::class, 'index'])
             // ->middleware('check-age-gt18')
