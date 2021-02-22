@@ -65,4 +65,7 @@ Route::get('san-pham/chi-tiet/{id}', [ProductController::class, 'detail'])
         ->name('product.detail');
 Route::post('san-pham/api/tang-view', [ProductController::class, 'tangView'])
 ->name('product.tangView');
+
+Route::get('test-tang-view/{id}', [ProductController::class, 'tangView']);
+
 Route::get('hoa-don', [OrderController::class, 'index'])->name('order.index');

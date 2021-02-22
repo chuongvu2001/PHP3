@@ -5,7 +5,7 @@
 
 <p>{{$product->name}}</p>
 <img src="{{asset($product->image)}}" width="150">
-<p id="viewNumber">{{$product->views}}</p>
+<p id="viewNumber">{{$totalViews}}</p>
 
 @endsection
 @section('page-script')
@@ -27,7 +27,6 @@
         .then(responseData => responseData.json())
         .then(productObj => {
             console.log(productObj);
-            document.querySelector('#viewNumber').innerText = productObj.views;
         })
     }, 2000);
 </script>
