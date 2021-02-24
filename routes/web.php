@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
@@ -66,3 +67,6 @@ Route::post('san-pham/api/tang-view', [ProductController::class, 'tangView'])
 Route::get('test-tang-view/{id}', [ProductController::class, 'tangView']);
 
 Route::get('hoa-don', [OrderController::class, 'index'])->name('order.index');
+
+
+Route::get('sendemail', [HomeController::class, 'sendmail']);
