@@ -28,6 +28,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        // tự động tăng 1 lượt view cho 1 sản phẩm có id = 50 sau mỗi phút
+
         $schedule->call(function () {
             Log::info('Schedule Running');
             $today = Carbon::yesterday()->format('Y-m-d');
