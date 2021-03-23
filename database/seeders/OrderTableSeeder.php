@@ -42,6 +42,5 @@ class OrderTableSeeder extends Seeder
             // lưu hóa đơn 1 lần nữa để cập nhật tổng số tiền
             $model->save();
         }
-        
     }
 }
